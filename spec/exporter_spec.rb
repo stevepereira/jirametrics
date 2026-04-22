@@ -109,6 +109,11 @@ describe Exporter do
   end
 
   context 'download' do
+    it 'fails if jira_config is not set' do
+      exporter.project name: 'foo'
+      expect { exporter.download name_filter: '*' }.to raise_error 'jira_config not set'
+    end
+
     it 'fails if download block is missing' do
       exporter.jira_config 'spec/testdata/jira-config.json'
       exporter.project name: 'foo'

@@ -44,6 +44,8 @@ class Exporter
   end
 
   def download name_filter:
+    raise 'jira_config not set' if @jira_config.nil?
+
     @downloading = true
     github_pr_cache = {}
     each_project_config(name_filter: name_filter) do |project|
