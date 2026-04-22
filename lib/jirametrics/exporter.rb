@@ -115,8 +115,6 @@ class Exporter
   end
 
   def project name: nil, &block
-    raise 'jira_config not set' if @jira_config.nil?
-
     @project_configs << ProjectConfig.new(
       exporter: self, target_path: @target_path, jira_config: @jira_config, block: block, name: name
     )
